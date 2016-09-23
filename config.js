@@ -1,6 +1,6 @@
 module.exports = {
-    totalCallsCount: 50,
-    callsPerSecond: 5,
+    totalCallsCount: 400,
+    callsPerSecond: 10,
     origins: [
         {
             server: '104.193.20.18',
@@ -10,7 +10,28 @@ module.exports = {
             weight: 30
         },
         {
+            server: '10.0.82.91',
+            enabled: true,
+            username: 'freeswitch',
+            password: 'works',
+            weight: 10
+        },
+        {
             server: '10.0.82.92',
+            enabled: true,
+            username: 'freeswitch',
+            password: 'works',
+            weight: 10
+        },
+        {
+            server: '104.193.20.11',
+            enabled: true,
+            username: 'freeswitch',
+            password: 'works',
+            weight: 10
+        },
+        {
+            server: '104.193.20.12',
             enabled: true,
             username: 'freeswitch',
             password: 'works',
