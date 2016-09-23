@@ -1,5 +1,6 @@
 /*globals module, require */
 var util = require('util');
+var url = require('url');
 var RateLimiter = require('limiter').RateLimiter;
 var rsvp = require('rsvp');
 var request = require('request');
@@ -21,7 +22,7 @@ indexes.forEach(function (index) {
             var urlPath = util.format('webapi/bgapi?lua summondialer.lua robot %s@%s 123 sleep:8000|dtmf:%s',
                 destinationNumber, destinationServer, conferencePin);
 
-            request(baseUrl + encodeURIComponent(urlPath), function (error, response, body) {
+            request(url.resolve(baseUrl, encodeURIComponent(urlPath)), function (error, response, body) {
                 if (error) {
                     reject(error);
                 } else if (response.statusCode !== 200) {
