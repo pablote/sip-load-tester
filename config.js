@@ -6,13 +6,15 @@ module.exports = {
             server: '104.193.20.18',
             enabled: true,
             username: 'freeswitch',
-            password: 'works'
+            password: 'works',
+            weight: 30
         },
         {
             server: '10.0.82.92',
             enabled: true,
             username: 'freeswitch',
-            password: 'works'
+            password: 'works',
+            weight: 10
         }
     ],
     destination: {

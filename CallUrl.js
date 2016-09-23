@@ -11,8 +11,29 @@ module.exports = (function () {
     }
 
     function getOriginServer(self) {
+        // filter out disabled servers
         var availableOrigins = u.filter(config.origins, function (origin) { return origin.enabled; });
-        return availableOrigins[Math.floor(Math.random() * availableOrigins.length)];
+
+        // pick a random one based on weight
+        var totalWeight = 0;
+
+        availableOrigins.forEach(function (origin) {
+            totalWeight += origin.weight
+        });
+
+        var randomNumber = Math.floor(Math.random() * totalWeight);
+        var acumProbability = 0;
+        var response = null;
+
+        availableOrigins.forEach(function (origin) {
+            acumProbability += origin.weight;
+
+            if (response == null && randomNumber <= acumProbability) {
+                response = origin;
+            }
+        });
+
+        return response;
     }
 
     CallUrl.prototype.run = function () {
