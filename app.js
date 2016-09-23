@@ -13,8 +13,13 @@ var requestPromises = [];
 indexes.forEach(function (index) {
     requestPromises.push(new rsvp.Promise(function (resolve, reject) {
         limiter.removeTokens(1, function (err, remainingRequests) {
+            var conferencePin = '9047';
+            var originServer = '104.193.20.18';
+            var destinationServer = '104.193.20.18';
+            var destinationNumber = '6463500992';
             var url = util.format('http://freeswitch:works@%s:8080/webapi/bgapi?lua%20summondialer.lua%20robot%20%s%40%s%20123%20sleep%3A8000%7Cdtmf%3A%s',
-                '104.193.20.18', '6463500992', '104.193.20.18', '3438');
+                originServer, destinationNumber, destinationServer, conferencePin);
+
             request(url, function (error, response, body) {
                 if (error) {
                     reject(error);
