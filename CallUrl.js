@@ -42,10 +42,10 @@ module.exports = (function () {
             self.limiter.removeTokens(1, function (err, remainingRequests) {
                 var origin = getOriginServer(self);
                 var baseUrl = util.format('http://%s:%s@%s:8080/', origin.username, origin.password, origin.server);
-                var urlPath = util.format('webapi/bgapi?lua summondialer.lua robot %s@%s 123 sleep:8000|dtmf:%s',
+                var urlPath = util.format('webapi/bgapi?lua summondialer.lua robot %s@%s 123 %s',
                     config.destination.number,
                     config.destination.server,
-                    config.destination.conferencePin);
+                    config.destination.commands);
 
                 request(url.resolve(baseUrl, encodeURIComponent(urlPath)), function (error, response, body) {
                     if (error) {

@@ -12,6 +12,6 @@ module.exports = {
     destination: {
         server: '104.193.20.18',
         number: '6463500992',
-        conferencePin: '9047'
+        commands: 'sleep:8000|dtmf:9047'
     }
 };
