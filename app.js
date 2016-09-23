@@ -17,10 +17,11 @@ indexes.forEach(function (index) {
             var originServer = '104.193.20.18';
             var destinationServer = '104.193.20.18';
             var destinationNumber = '6463500992';
-            var url = util.format('http://freeswitch:works@%s:8080/webapi/bgapi?lua%20summondialer.lua%20robot%20%s%40%s%20123%20sleep%3A8000%7Cdtmf%3A%s',
-                originServer, destinationNumber, destinationServer, conferencePin);
+            var baseUrl = util.format('http://freeswitch:works@%s:8080/', originServer);
+            var urlPath = util.format('webapi/bgapi?lua summondialer.lua robot %s@%s 123 sleep:8000|dtmf:%s',
+                destinationNumber, destinationServer, conferencePin);
 
-            request(url, function (error, response, body) {
+            request(baseUrl + encodeURIComponent(urlPath), function (error, response, body) {
                 if (error) {
                     reject(error);
                 } else if (response.statusCode !== 200) {
