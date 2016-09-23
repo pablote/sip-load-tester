@@ -1,0 +1,18 @@
+{
+  "name": "call-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "limiter": "^1.1.0",
+    "request": "^2.75.0",
+    "rsvp": "^3.3.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
